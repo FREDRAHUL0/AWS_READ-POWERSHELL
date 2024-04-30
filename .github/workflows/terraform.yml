@@ -1,4 +1,4 @@
-name: Fetch EC2 details
+name: Your Workflow Name
 
 on:
   push:
@@ -6,18 +6,19 @@ on:
       - main
 
 jobs:
-  your_job_name:  
+  your_job_name:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           submodules: true  # Include submodules if your repository uses them
+
 
       - name: "Setup Terraform cli"    
         with:
