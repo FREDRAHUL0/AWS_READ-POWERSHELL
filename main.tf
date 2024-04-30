@@ -9,5 +9,5 @@ data "aws_instances" "example" {
 }
 
 output "instance_details" {
-  value = data.aws_instances.example.instances
+  value = data.aws_instances.example.ids  # Assuming you want to output the instance IDs
 }
