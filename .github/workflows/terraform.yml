@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -23,21 +23,15 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
             terraform_version: "1.7.4"
-            
-      - name: 'Terraform Init'
-        run: | 
-          terraform init 
-      - name: 'Terraform Plan'
-        run: | 
-          terraform plan
-      - name: 'Terraform apply'
-        run: | 
-          terraform apply --auto-approve -input=false 
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Plan Terraform changes
+        run: terraform plan
+
+      - name: Apply Terraform changes
+        run: terraform apply -auto-approve
+
       - name: Display EC2 Instance Details
-        run: terraform output instance_details    
-         
-          
-          
-          
-       
-        
+        run: terraform output instance_details
