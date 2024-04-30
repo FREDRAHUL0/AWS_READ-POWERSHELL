@@ -1,17 +1,25 @@
-name: "tf-workflow" 
-on: 
-  workflow_dispatch: 
-jobs:    
-  tfrun: 
+name: Fetch EC2 details
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  your_job_name:  
     runs-on: ubuntu-latest
-    name: "terraform run" 
-    steps: 
-      - name: checkout 
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Checkout code
         uses: actions/checkout@v3
-      - uses: hashicorp/setup-terraform@v3
-        env:
-          NODE_VERSION: 20.x
-        name: "Setup Terraform cli"    
+        with:
+          submodules: true  # Include submodules if your repository uses them
+
+      - name: "Setup Terraform cli"    
         with:
             terraform_version: "1.7.4"
 
