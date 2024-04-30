@@ -22,7 +22,7 @@ jobs:
       - name: "Setup Terraform cli"    
         uses: hashicorp/setup-terraform@v2
         with:
-            terraform_version: "1.7.4"
+          terraform_version: "1.7.4"
 
       - name: Initialize Terraform
         run: terraform init
