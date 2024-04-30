@@ -35,3 +35,6 @@ jobs:
 
       - name: Display EC2 Instance Details
         run: terraform output instance_details
+
+      - name: Save output to file
+        run: echo "INSTANCE_DETAILS=${{ steps.display_ec2.outputs.instance_details }}" >> $GITHUB_ENV
