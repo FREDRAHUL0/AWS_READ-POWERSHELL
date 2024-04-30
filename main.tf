@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1"  # Specify your desired region
+  region = "ap-south-1"  # Replace with your desired region
 }
 
 data "aws_instances" "example" {
