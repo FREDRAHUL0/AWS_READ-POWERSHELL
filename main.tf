@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 data "aws_instances" "example" {
-  instance_tags {
+  instance_tags = {
     Name = "webserver"  # Replace with the name of your EC2 instance
   }
 }
