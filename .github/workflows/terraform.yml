@@ -9,6 +9,8 @@ jobs:
       - name: checkout 
         uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v3
+        env:
+          NODE_VERSION: 20.x
         name: "Setup Terraform cli"    
         with:
             terraform_version: "1.7.4"
