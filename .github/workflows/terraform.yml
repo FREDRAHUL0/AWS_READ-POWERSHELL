@@ -1,72 +1,15 @@
-name: Fetch EC2 details
-
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  push: 
 
 jobs:
-  your_job_name:
-    runs-on: ubuntu-latest
-    env:
-           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-    steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-         
-
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          submodules: true  # Include submodules if your repository uses them
-
-      - name: "Setup Terraform cli"    
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: "1.7.4"
-
-      - name: Initialize Terraform
-        run: terraform init
-
-      - name: Plan Terraform changes
-        run: terraform plan
-
-      - name: Apply Terraform changes
-        run: terraform apply -auto-approve
-      - name: Output EC2 instance details
-        run: terraform output -json instance_details
-        id: ec2_output
-
-      - name: Print EC2 instance details
-        run: echo "${{ steps.ec2_output.outputs.value }}"
-      
-
-      
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   job1: 
+     runs-on: ubuntu-latest 
+     steps:
+       - uses: aws-actions/configure-aws-credentials@v4
+         with:
+              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              aws-region: us-east-2
+       
+  
