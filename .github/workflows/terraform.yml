@@ -13,7 +13,7 @@ jobs:
               aws-region: us-east-2
        - run: 
            Install-Module -Name  AWS.Tools.EC2 -Force 
-           Get-EC2Vpc 
+           Get-EC2Vpc  
          shell: pwsh  
            
        
