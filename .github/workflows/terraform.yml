@@ -42,6 +42,31 @@ jobs:
 
       - name: Print EC2 instance details
         run: echo "${{ steps.ec2_output.outputs.value }}"
+      
 
       
-        run: terraform output instance_details
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
