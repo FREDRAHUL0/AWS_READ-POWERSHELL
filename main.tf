@@ -13,7 +13,7 @@ provider "aws" {
 
 data "aws_instances" "example" {
   instance_tags = {
-    Name = "webserver"  # Replace with the name of your EC2 instance
+    Name = "i-005c929ec9895776f"  # Replace with the name of your EC2 instance
   }
 }
 
