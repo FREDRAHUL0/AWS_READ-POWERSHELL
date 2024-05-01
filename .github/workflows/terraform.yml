@@ -36,6 +36,12 @@ jobs:
 
       - name: Apply Terraform changes
         run: terraform apply -auto-approve
+      - name: Output EC2 instance details
+        run: terraform output -json instance_details
+        id: ec2_output
 
-      - name: Display EC2 Instance Details
+      - name: Print EC2 instance details
+        run: echo "${{ steps.ec2_output.outputs.value }}"
+
+      
         run: terraform output instance_details
