@@ -15,14 +15,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Install AWS.Tools.EC2 and AWS.Tools.ElasticLoadBalancingV2 modules
+      - name: Install AWS.Tools.EC2 module
         run: |
           Install-Module -Name AWS.Tools.EC2 -Force -Scope CurrentUser
-          shell: pwsh
+        shell: pwsh
 
       - name: Get EC2 VPC details
         run: |
           $vpcs = Get-EC2Vpc
           Write-Output $vpcs
-
-         
+        shell: pwsh
