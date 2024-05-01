@@ -22,4 +22,10 @@ jobs:
 
       - name: Get ALB details
         run: |
-          aws elbv2 describe-load-balancers | jq '.LoadBalancers[] | {Name: .LoadBalancerName, DNSName: .DNSName, Scheme: .Scheme, Type: .Type, VpcId: .VpcId, State: .State.Code}' | jq -r '[(.Name), (.DNSName), (.Scheme), (.Type), (.VpcId), (.State)] | @tsv' | column -t
+          aws elbv2 describe-load-balancers | jq -r '.LoadBalancers[] | [.LoadBalancerName, .DNSName, .Scheme, .Type, .VpcId, .State.Code] | @csv' > alb_details.csv
+
+      - name: Upload CSV artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: alb_details
+          path: alb_details.csv
