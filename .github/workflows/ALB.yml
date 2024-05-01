@@ -27,4 +27,3 @@ jobs:
           $albs = Get-ELBV2LoadBalancer
           Write-Output $albs
         shell: pwsh
-
