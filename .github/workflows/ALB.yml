@@ -15,20 +15,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Install AWS.Tools.ElasticLoadBalancingV2 module
+      - name: Install AWS CLI
         run: |
-          Install-Module -Name AWS.Tools.Installer -Scope CurrentUser -Force
-          Install-AWSToolsModule AWS.Tools.ElasticLoadBalancingV2 -Force -Scope CurrentUser
-        shell: pwsh
-
-      - name: Debug module import
-        run: |
-          Get-Module -Name AWS.Tools.ElasticLoadBalancingV2 -ListAvailable
-        shell: pwsh
+          sudo apt-get update
+          sudo apt-get install -y awscli
 
       - name: Get ALB details
         run: |
-          Import-Module AWS.Tools.ElasticLoadBalancingV2
-          $albs = Get-ELBV2LoadBalancer
-          Write-Output $albs
-        shell: pwsh
+          aws elbv2 describe-load-balancers
