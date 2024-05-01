@@ -21,6 +21,11 @@ jobs:
           Install-AWSToolsModule AWS.Tools.ElasticLoadBalancingV2 -Force -Scope CurrentUser
         shell: pwsh
 
+      - name: Debug module import
+        run: |
+          Get-Module -Name AWS.Tools.ElasticLoadBalancingV2 -ListAvailable
+        shell: pwsh
+
       - name: Get ALB details
         run: |
           Import-Module AWS.Tools.ElasticLoadBalancingV2
