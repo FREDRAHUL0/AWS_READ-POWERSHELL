@@ -15,7 +15,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Install AWS.Tools.EC2 module
+      - name: Install AWS.Tools.EC2 and AWS.Tools.ElasticLoadBalancingV2 modules
         run: |
           Install-Module -Name AWS.Tools.EC2 -Force -Scope CurrentUser
           Install-Module -Name AWS.Tools.ElasticLoadBalancingV2 -Force -Scope CurrentUser
@@ -29,6 +29,6 @@ jobs:
           $ec2Instances = Get-EC2Instance
           Write-Output $ec2Instances
 
-          $albs = Get-ELBv2LoadBalancer
+          $albs = Get-ELBV2LoadBalancer
           Write-Output $albs
         shell: pwsh
