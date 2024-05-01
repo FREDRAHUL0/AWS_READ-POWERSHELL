@@ -18,17 +18,11 @@ jobs:
       - name: Install AWS.Tools.EC2 and AWS.Tools.ElasticLoadBalancingV2 modules
         run: |
           Install-Module -Name AWS.Tools.EC2 -Force -Scope CurrentUser
-          Install-Module -Name AWS.Tools.ElasticLoadBalancingV2 -Force -Scope CurrentUser
-        shell: pwsh
+          shell: pwsh
 
       - name: Get EC2 VPC details
         run: |
           $vpcs = Get-EC2Vpc
           Write-Output $vpcs
 
-          $ec2Instances = Get-EC2Instance
-          Write-Output $ec2Instances
-
-          $albs = Get-ELBV2LoadBalancer
-          Write-Output $albs
-        shell: pwsh
+         
