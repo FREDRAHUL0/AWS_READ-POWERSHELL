@@ -1,0 +1,26 @@
+name: Fetch EC2 Details
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  job1:
+    runs-on: windows-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: YOUR-AWS-REGION
+
+      - name: Install AWS Tools for PowerShell
+        run: |
+          Install-Module -Name AWSPowerShell.NetCore -Force -Scope CurrentUser -AllowClobber
+
+      - name: Fetch EC2 details with PowerShell
+        shell: pwsh
+        run: |
+          Import-Module AWSPowerShell.NetCore
+          Get-EC2Instance | Format-Table -Property InstanceId,InstanceType,State,PrivateIpAddress,PublicIpAddress -AutoSize
