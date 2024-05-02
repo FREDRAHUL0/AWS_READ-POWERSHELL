@@ -15,9 +15,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Install AWS Tools for PowerShell
+      - name: Install AWS.Tools.EC2 module
         run: |
-          Install-Module -Name AWSPowerShell.NetCore -Force -Scope CurrentUser -AllowClobber
+          Install-Module -Name AWS.Tools.EC2 -Force -Scope CurrentUser
+        shell: pwsh
+
+      
 
       - name: Fetch EC2 details with PowerShell
         shell: pwsh
